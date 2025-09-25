@@ -46,8 +46,12 @@
                             <div id="real" class="real">
                                 <span class="rcifrao">R$</span>{{ productPriceTo.toString().split(',')[0] }}
                             </div>
-                            <div id="cents" class="cents">,{{ productPriceTo.toString().split(',')[productPriceTo.toString().split(',').length - 1] }}</div>
-                            <div id="quantity" class="quantity">{{ quantity }}</div>
+                            <div id="cents" class="cents">
+                                <span>
+                                    ,{{ productPriceTo.toString().split(',')[productPriceTo.toString().split(',').length - 1] }}
+                                </span>
+                                <span id="quantity" class="quantity">{{ quantity }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,41 +85,27 @@ const adjustFontSize = () => {
     if(priceReal && priceCents && quantity) {
         switch (textLength) {
             case 1: 
-                priceReal.style.fontSize = '90rem'
+                priceReal.style.fontSize = '106rem'
+                priceReal.style.transform = 'scale(1, 1.2) translateY(-6rem)';
+                priceCents.style.transform = 'translateY(5rem)'
                 priceCents.style.fontSize = '26rem'
-                
-                priceReal.style.transform = 'scale(1, 1.2) translateY(-100px)'
-                priceCents.style.transform = 'scale(1, 1.6) translate(48px, 100px)'
-                quantity.style.transform = 'scale(1.1, 1.8) translate(-300px, -210px)'
-                
+                quantity.style.fontSize = '20rem'
                 break
 
             case 2:
-                priceReal.style.fontSize = '50rem'
-                priceCents.style.fontSize = '20rem'
-                
-                priceReal.style.transform = 'scale(1.3, 2.2) translateY(100px)'
-                priceCents.style.transform = 'scale(1, 2) translate(240px, 50px)'
-                quantity.style.transform = 'scale(1.1, 1.8) translate(-100px, 220px)'
+                priceReal.style.fontSize = '70rem'
+                priceReal.style.transform = 'scale(1, 1.7) translateY(7rem)';
+                priceCents.style.transform = 'translateY(7rem)'
+                priceCents.style.fontSize = '16rem'
+                quantity.style.fontSize = '10rem'
                 break
 
             case 3:
                 priceReal.style.fontSize = '50rem'
-                priceCents.style.fontSize = '20rem'
-                
-                priceReal.style.transform = 'scale(1.2, 2.2) translateY(100px)'
-                priceCents.style.transform = 'scale(1, 2) translate(240px, 50px)'
-                quantity.style.transform = 'scale(1.1, 1.8) translate(-100px, 220px)'
-                break
-
-            case 4:
-                priceReal.style.fontSize = '26rem'
+                priceReal.style.transform = 'scale(1, 2.5) translateY(9rem)';
+                priceCents.style.transform = 'translateY(5rem)'
                 priceCents.style.fontSize = '16rem'
-                
-                priceReal.style.transform = 'scale(1.2, 4.2) translateY(168px)'
-                priceCents.style.transform = 'scale(1.1, 3) translate(240px, 100px)'
-                quantity.style.transform = 'scale(1.1, 1.8) translate(-100px, 220px)'
-
+                quantity.style.fontSize = '10rem'
                 break
         }
         
@@ -186,7 +176,6 @@ onMounted(() => {
 })
 </script>
 <style scoped>
-
 .svg1 {
     display: inline-block;
     position: absolute;
@@ -208,7 +197,9 @@ onMounted(() => {
     top: -70px;
     font-size: 35rem; 
     z-index: 2; 
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .descrption-text {
@@ -219,8 +210,9 @@ onMounted(() => {
     width: 95%;
     overflow: hidden;
     line-height: normal;
-    font-size: 16rem; 
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .container-price {
@@ -232,23 +224,27 @@ onMounted(() => {
     justify-content: space-between;
     align-items: center;
     color: black;
-    padding: 2% 0;
     font-size: 8rem; 
 }
 
 .price-from-text div {
     position: relative;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     text-align: left;
 }
 
 .desc-text {
     color: black;
     font-size: 10rem; 
-    font-family: 'OfertaDoDia', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .price-to-text div {
+    display: -webkit-box;
     text-align: center;
     line-height: normal;
 }
@@ -256,9 +252,10 @@ onMounted(() => {
 .rcifrao {
     font-size: 18%; 
     text-align: left;
-    padding-right: 2%;
-    font-weight: lighter;
-    font-family: 'OfertaDoDia', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .percentage-poster {
@@ -269,7 +266,6 @@ onMounted(() => {
 }
 
 .discount-poster {
-    z-index: 2;
     top: -390px;
     position: relative;
     text-align: center;
@@ -285,31 +281,29 @@ onMounted(() => {
 }
 
 .price-to-text .real {
-    display: inline-block;
-    transform: scale(1, 1.2) translatey(134px);
-    font-size: 90rem;
-    /* font-weight: bold; */
     color: red;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .price-to-text .cents {
-    display: inline-block;
-    transform: scale(1.1, 1.8) translate(48px, 110px);
-    font-size: 30rem;
-    /* font-weight: bold; */
-    vertical-align: top;
+    height: 100%;
     color: red;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: grid !important;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .price-to-text .quantity {
-    display: inline-block;
-    transform: scale(1.1, 1.8) translate(-300px, -210px);
     font-size: 10rem;
-    /* font-weight: bold; */
-    vertical-align: bottom;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: black;
 }
 
 .valid {
